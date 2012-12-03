@@ -3,37 +3,39 @@ HtmlHelper
 
 .. php:class:: HtmlHelper(View $view, array $settings = array())
 
-The role of the HtmlHelper in CakePHP is to make HTML-related
-options easier, faster, and more resilient to change. Using this
-helper will enable your application to be more light on its feet,
-and more flexible on where it is placed in relation to the root of
-a domain.
+CakePHP における HtmlHelper の役割は、 HTML に関連するオプションを
+より簡単、高速に作成し、より弾力的なものに変えることです。
+このヘルパーを使うことで、アプリケーションの足どりはより軽くなり、
+そしてドメインのルートが置かれている場所に関して、よりフレキシブル
+なものになるでしょう。
 
-Many HtmlHelper methods include a ``$htmlAttributes`` parameter,
-that allow you to tack on any extra attributes on your tags. Here
-are a few examples of how to use the $htmlAttributes parameter:
+HtmlHelper にある多くのメソッドは ``$htmlAttributes`` という
+引数を持っています。これにより、いかなる追加属性もタグに
+付け加えることができます。これは ``$htmlAttributes`` を使う
+方法についての簡単な例です。
 
 .. code-block:: html
 
-    Desired attributes: <tag class="someClass" />      
-    Array parameter: array('class' => 'someClass')
+    付けられる属性: <tag class="someClass" />      
+    配列での指定: array('class' => 'someClass')
      
-    Desired attributes: <tag name="foo" value="bar" />  
-    Array parameter:  array('name' => 'foo', 'value' => 'bar')
+    付けられる属性: <tag name="foo" value="bar" />  
+    配列での指定:  array('name' => 'foo', 'value' => 'bar')
 
 
 .. note::
 
-    The HtmlHelper is available in all views by default. If you're
-    getting an error informing you that it isn't there, it's usually
-    due to its name being missing from a manually configured $helpers
-    controller variable.
+    HtmlHelpler は既定ではすべてのビューで使うことができます。
+    このヘルパーが存在しないという旨のエラーが発生したとき、
+    たいていの原因はコントローラで変数 ``$helpers`` を手動で
+    設定した際、名前を書き忘れたことです。
 
-Inserting Well-Formatted elements
-=================================
+Well-Formatted な要素の挿入
+===========================
 
-The most important task the HtmlHelper accomplishes is creating
-well formed markup. Don't be afraid to use it often - you can cache
+HtmlHelperの果たすもっとも重要なタスクは、適切に定義された
+マークアップの生成です。
+ Don't be afraid to use it often - you can cache
 views in CakePHP in order to save some CPU cycles when views are
 being rendered and delivered. This section will cover some of the
 methods of the HtmlHelper and how to use them.
