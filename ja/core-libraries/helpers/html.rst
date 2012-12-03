@@ -35,7 +35,8 @@ Well-Formatted な要素の挿入
 
 HtmlHelperの果たすもっとも重要なタスクは、適切に定義された
 マークアップの生成です。
- Don't be afraid to use it often - you can cache
+
+Don't be afraid to use it often - you can cache
 views in CakePHP in order to save some CPU cycles when views are
 being rendered and delivered. This section will cover some of the
 methods of the HtmlHelper and how to use them.
@@ -902,8 +903,8 @@ methods of the HtmlHelper and how to use them.
 
         <form action="http://example.com" method="post" class="myform">
 
-Changing the tags output by HtmlHelper
-======================================
+HtmlHelper が出力するタグの変更
+===============================
 
 .. php:method:: loadConfig(mixed $configFile, string $path = null)
 
@@ -926,19 +927,18 @@ Changing the tags output by HtmlHelper
     You can then load this tag set by calling
     ``$this->Html->loadConfig('html5_tags');``
 
-Creating breadcrumb trails with HtmlHelper
-==========================================
+HtmlHelper を使ったパンくずリストの作成
+=======================================
 
 .. php:method:: getCrumbs(string $separator = '&raquo;', string $startText = false)
 
-    CakePHP has the built in ability to automatically create a
-    breadcrumb trail in your app. To set this up, first add something
-    similar to the following in your layout template::
+    CakePHP はパンくずリストを自動生成する組み込みメソッドを持っています。
+    設置するにはまず、レイアウトテンプレートに以下のようなコードを追加します。::
 
         echo $this->Html->getCrumbs(' > ', 'Home');
 
-    The ``$startText`` option can also accept an array.  This gives more control
-    over the generated first link::
+    ``$startText`` のオプションは1つの配列も受け付けます。 
+    これにより、生成された最初のリンクへのさらなる制御を可能にします。::
 
         echo $this->Html->getCrumbs(' > ', array(
             'text' => $this->Html->image('home.png'),
@@ -946,31 +946,31 @@ Creating breadcrumb trails with HtmlHelper
             'escape' => false
         ));
 
-    Any keys that are not ``text`` or ``url`` will be passed to
-    :php:meth:`~HtmlHelper::link()` as the ``$options`` parameter.
+    ``text`` または ``url`` でないキーは、 ``$options`` パラメータとして
+    :php:meth:`~HtmlHelper::link()` に渡されます。
 
     .. versionchanged:: 2.1
-        The ``$startText`` parameter now accepts an array.
+        ``$startText`` パラメータは配列も受け入れることができます。
 
 .. php:method:: addCrumb(string $name, string $link = null, mixed $options = null)
 
     Now, in your view you'll want to add the following to start the
     breadcrumb trails on each of the pages::
 
-        $this->Html->addCrumb('Users', '/users');
-        $this->Html->addCrumb('Add User', '/users/add');
+        $this->Html->addCrumb('ユーザー', '/users');
+        $this->Html->addCrumb('ユーザーの追加', '/users/add');
 
-    This will add the output of "**Home > Users > Add User**" in your
-    layout where getCrumbs was added.
+    これにより、レイアウトの ``getCrumbs`` を書いたたところに、
+    "**Home > ユーザー > ユーザーの追加**" という出力を追加します。
 
 .. php:method:: getCrumbList(array $options = array(), mixed $startText)
 
-    :param array $options: An array of :term:`html attributes` for the
-        containing ``<ul>`` element. Can also contain the 'separator',
-        'firstClass' and 'lastClass' options.
+    :param array $options: ``<ul>`` タグに含めたい :term:`html attributes`
+        の配列です。 'separator' と 'firstClass' 、 'lastClass' の
+        オプションも含めることができます。
     :param string|array $startText: The text or element that precedes the ul.
 
-    Returns breadcrumbs as a (x)html list.
+    (X)HTML のリストとしてパンくずリストを返します。
 
     This method uses :php:meth:`HtmlHelper::tag()` to generate list and its
     elements. Works similar to :php:meth:`~HtmlHelper::getCrumbs()`, so it uses
@@ -980,10 +980,10 @@ Creating breadcrumb trails with HtmlHelper
     ``$startText`` option for :php:meth:`~HtmlHelper::getCrumbs()`.
 
     .. versionchanged:: 2.1
-        The ``$startText`` parameter was added.
+        ``$startText`` が追加されました。
 
     .. versionchanged:: 2.3
-        The 'separator', 'firstClass' and 'lastClass' options were added.
+        'separator'と 'firstClass' 、 'lastClass' のオプションが追加されました。
 
 
 .. meta::
