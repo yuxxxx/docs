@@ -39,11 +39,11 @@ original sender using the Sender header. You can do so using ``sender()``::
 =============
 
 Configuration for ``Email`` defaults is created using ``config()`` and
-``configTransport()``. You should put your email presets in the
-**config/app.php** file.  The ``config/app.php.default`` file is an
-example of this file. It is not required to define email configuration in
-**config/app.php**. ``Email`` can be used without it and use the respective
-methods to set all ew Email();
+``configTransport()``. **config/app.php** というファイルに、メールの規定の設定を書くべきです。
+``config/app.php.default`` というファイルはこのファイルの記述例です。
+**config/app.php** でメールの設定をする必ず要求されるものではありません。
+``Email`` は設定ファイルなしでも使え、Email() のメソッドはすべて、個々の設定のために使うことができます。
+
     $email->sender('app@example.com', 'MyApp emailer');
 
 .. note::
@@ -57,8 +57,8 @@ By defining profiles and transports, you can keep your application code free of
 configuration data, and avoid duplication that makes maintenance and deployment
 less difficult.
 
-To load a predefined configuration, you can use the ``profile()`` method or pass it
-to the constructor of ``Email``::
+あらかじめ定義された設定を読み込むために、 ``profile()`` メソッドを使う、または  ``Email`` の
+コンストラクタに値を渡すことができます。 ::
 
     $email = new Email();
     $email->profile('default');
@@ -66,8 +66,7 @@ to the constructor of ``Email``::
     // Or in constructor
     $email = new Email('default');
 
-Instead of passing a string which matches a preset configuration name, you can
-also just load an array of options::
+存在する設定名の文字列を渡す変わりに、オプションの配列を読み込ませることもできます。 ::
 
     $email = new Email();
     $email->profile(['from' => 'me@example.org', 'transport' => 'my_custom']);
@@ -75,25 +74,25 @@ also just load an array of options::
     // Or in constructor
     $email = new Email(['from' => 'me@example.org', 'transport' => 'my_custom']);
 
-Configuring Transports
-----------------------
+トランスポーターの設定	
+-------------------
 
 .. php:staticmethod:: configTransport($key, $config = null)
 
-Email messages are delivered by transports. Different transports allow you to
+メールのメッセージはトランスポーターによって送信されます。Different transports allow you to
 send messages via PHP's ``mail()`` function, SMTP servers, or not at all which
 is useful for debugging. Configuring transports allows you to keep configuration
 data out of your application code and makes deployment simpler as you can simply
-change the configuration data. An example transport configuration looks like::
+change the configuration data. トランスポーターの設定の例はこのようになります。 ::
 
     use Cake\Network\Email\Email;
 
-    // Sample Mail configuration
+    // メール設定のサンプル
     Email::configTransport('default', [
         'className' => 'Mail'
     ]);
 
-    // Sample smtp configuration.
+    // SMTP設定のサンプル
     Email::configTransport('gmail', [
         'host' => 'ssl://smtp.gmail.com',
         'port' => 465,
@@ -102,9 +101,9 @@ change the configuration data. An example transport configuration looks like::
         'className' => 'Smtp'
     ]);
 
-You can configure SSL SMTP servers, like Gmail. To do so, put the ``ssl://``
-prefix in the host and configure the port value accordingly. You can also
-enable TLS SMTP using the ``tls`` option::
+Gmail のようなSSL SMTPサーバーを設定することができます。そのためには、 ``ssl://`` という接頭辞を
+ホストに加え、それに従って適切なポート番号を設定します。 ``tls`` オプションを使うことでも TLS SMTP を 
+有効にすることができます。 ::
 
     use Cake\Network\Email\Email;
 
